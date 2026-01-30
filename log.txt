@@ -1,0 +1,85 @@
+[MCU Log]: APPLIOK
+[MCU Log]: Debug: Input Size = 250 (Expected: 250)
+[MCU Log]: Debug: Output Size = 2 (Expected: 2)
+[MCU Log]: --- [SECURITY DIAGNOSTIC] ---
+[MCU Log]: CPU Mode: Privileged
+[MCU Log]: CPU World: SECURE (TrustZone Enabled)
+[MCU Log]: SAU: ENABLED
+[MCU Log]: SAU Default: ALL SECURE (Good)
+[MCU Log]: ---------------------------
+[MCU Log]: =============================================
+[MCU Log]: STM32 NPU Debug: Layer-by-Layer Inspection
+[MCU Log]: =============================================
+[MCU Log]: [Test 1] Checking Flash Header at 0x71000000...
+[MCU Log]: Data: 00 F3 D8 13 1E D6 34 A2
+[MCU Log]: --- [Sample #0] ---
+[MCU Log]: Input[0~9]: -16,-15,-16,-16,-15,-16,-16,-17,-16,-17
+[MCU Log]: >>> Start Inference (Step-by-Step)...
+[MCU Log]: [Ep2(MaxPool) Output] @0x342E0100: 55 55 55 55 55 55 55 55 55 55
+[MCU Log]: [Ep3(Gemm1)   Output] @0x342E1080: 2D F5 88 2B E4 53 FD 44 10 87
+[MCU Log]: [Ep4(Gemm2)   Output] @0x342E0000: F0 F1 F0 F0 F1 F0 F0 EF F0 EF
+[MCU Log]: [Ep5(Logits)  Output] @0x342E0100: 55 55 55 55 55 55 55 55 55 55
+[MCU Log]: [Ep6(Softmax) Output] @0x342E0110: 55 55 55 55 55 55 55 55 55 55
+[MCU Log]: [Final Check]
+[MCU Log]: ├── Raw Logits: [109, -97]
+[MCU Log]: └── Final Prob: [127, -128] -> Predict: NORMAL
+[MCU Log]: --------------------------------------------------
+[MCU Log]: --- [Sample #1] ---
+[MCU Log]: Input[0~9]: -32,-32,-32,-32,-31,-31,-32,-32,-33,-33
+[MCU Log]: >>> Start Inference (Step-by-Step)...
+[MCU Log]: [Ep2(MaxPool) Output] @0x342E0100: 55 55 55 55 55 55 55 55 55 55
+[MCU Log]: [Ep3(Gemm1)   Output] @0x342E1080: 2D F5 88 2B E4 53 FD 44 10 87
+[MCU Log]: [Ep4(Gemm2)   Output] @0x342E0000: E0 E0 E0 E0 E1 E1 E0 E0 DF DF
+[MCU Log]: [Ep5(Logits)  Output] @0x342E0100: 55 55 55 55 55 55 55 55 55 55
+[MCU Log]: [Ep6(Softmax) Output] @0x342E0110: 55 55 55 55 55 55 55 55 55 55
+[MCU Log]: [Final Check]
+[MCU Log]: ├── Raw Logits: [109, -97]
+[MCU Log]: └── Final Prob: [127, -128] -> Predict: NORMAL
+[MCU Log]: --------------------------------------------------
+[MCU Log]: --- [Sample #2] ---
+[MCU Log]: Input[0~9]: -20,-20,-20,-18,-18,-18,-18,-19,-18,-18
+[MCU Log]: >>> Start Inference (Step-by-Step)...
+[MCU Log]: [Ep2(MaxPool) Output] @0x342E0100: 55 55 55 55 55 55 55 55 55 55
+[MCU Log]: [Ep3(Gemm1)   Output] @0x342E1080: 2D F5 88 2B E4 53 FD 44 10 87
+[MCU Log]: [Ep4(Gemm2)   Output] @0x342E0000: EC EC EC EE EE EE EE ED EE EE
+[MCU Log]: [Ep5(Logits)  Output] @0x342E0100: 55 55 55 55 55 55 55 55 55 55
+[MCU Log]: [Ep6(Softmax) Output] @0x342E0110: 55 55 55 55 55 55 55 55 55 55
+[MCU Log]: [Final Check]
+[MCU Log]: ├── Raw Logits: [109, -97]
+[MCU Log]: └── Final Prob: [127, -128] -> Predict: NORMAL
+[MCU Log]: --------------------------------------------------
+[MCU Log]: --- [Sample #3] ---
+[MCU Log]: Input[0~9]: -38,-38,-38,-38,-37,-37,-37,-37,-37,-36
+[MCU Log]: >>> Start Inference (Step-by-Step)...
+[MCU Log]: [Ep2(MaxPool) Output] @0x342E0100: 55 55 55 55 55 55 55 55 55 55
+[MCU Log]: [Ep3(Gemm1)   Output] @0x342E1080: 2D F5 88 2B E4 53 FD 44 10 87
+[MCU Log]: [Ep4(Gemm2)   Output] @0x342E0000: DA DA DA DA DB DB DB DB DB DC
+[MCU Log]: [Ep5(Logits)  Output] @0x342E0100: 55 55 55 55 55 55 55 55 55 55
+[MCU Log]: [Ep6(Softmax) Output] @0x342E0110: 55 55 55 55 55 55 55 55 55 55
+[MCU Log]: [Final Check]
+[MCU Log]: ├── Raw Logits: [109, -97]
+[MCU Log]: └── Final Prob: [127, -128] -> Predict: NORMAL
+[MCU Log]: --------------------------------------------------
+[MCU Log]: --- [Sample #4] ---
+[MCU Log]: Input[0~9]: 2,1,0,-2,-3,-4,-5,-6,-6,-7
+[MCU Log]: >>> Start Inference (Step-by-Step)...
+[MCU Log]: [Ep2(MaxPool) Output] @0x342E0100: 55 55 55 55 55 55 55 55 55 55
+[MCU Log]: [Ep3(Gemm1)   Output] @0x342E1080: 2D F5 88 2B E4 53 FD 44 10 87
+[MCU Log]: [Ep4(Gemm2)   Output] @0x342E0000: 02 01 00 FE FD FC FB FA FA F9
+[MCU Log]: [Ep5(Logits)  Output] @0x342E0100: 55 55 55 55 55 55 55 55 55 55
+[MCU Log]: [Ep6(Softmax) Output] @0x342E0110: 55 55 55 55 55 55 55 55 55 55
+[MCU Log]: [Final Check]
+[MCU Log]: ├── Raw Logits: [109, -97]
+[MCU Log]: └── Final Prob: [127, -128] -> Predict: NORMAL
+[MCU Log]: --------------------------------------------------
+[MCU Log]: --- [Sample #5] ---
+[MCU Log]: Input[0~9]: -18,-19,-20,-20,-19,-18,-18,-19,-20,-20
+[MCU Log]: >>> Start Inference (Step-by-Step)...
+[MCU Log]: [Ep2(MaxPool) Output] @0x342E0100: 55 55 55 55 55 55 55 55 55 55
+[MCU Log]: [Ep3(Gemm1)   Output] @0x342E1080: 2D F5 88 2B E4 53 FD 44 10 87
+[MCU Log]: [Ep4(Gemm2)   Output] @0x342E0000: EE ED EC EC ED EE EE ED EC EC
+[MCU Log]: [Ep5(Logits)  Output] @0x342E0100: 55 55 55 55 55 55 55 55 55 55
+[MCU Log]: [Ep6(Softmax) Output] @0x342E0110: 55 55 55 55 55 55 55 55 55 55
+[MCU Log]: [Final Check]
+[MCU Log]: ├── Raw Logits: [109, -97]
+[MCU Log]: └── Final Prob: [127, -128] -> Predict: NORMAL
