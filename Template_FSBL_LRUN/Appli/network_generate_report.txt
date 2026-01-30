@@ -1,0 +1,114 @@
+ST Edge AI Core v2.2.0-20266 2adc00962
+Created date          : 2026-01-29 15:19:04
+Parameters            : generate --target stm32n6 --name network -m C:/Users/ntustbestlab1234/Desktop/moe_ai/MIT_BIH_quant_114.tflite --st-neural-art n6-allmems-O3@C:/Users/ntustbestlab1234/STM32Cube/Repository/Packs/STMicroelectronics/X-CUBE-AI/10.2.0/scripts/N6_scripts/user_neuralart.json --workspace C:/Users/NTUSTB~1/AppData/Local/Temp/mxAI_workspace27672607734890016477086016986033244 --output C:/Users/ntustbestlab1234/.stm32cubemx/network_output
+
+Model name - MIT_BIH_quant_114
+------ --------------------------------- ---------------------- ----------------- --------- ------------------------------ 
+m_id   layer (original)                  oshape                 param/size             macc                   connected to 
+------ --------------------------------- ---------------------- ----------------- --------- ------------------------------ 
+0      serving_default_input_layer0 ()   [b:1,h:250,c:1]                                                                   
+       reshape_0 (EXPAND_DIMS)           [b:1,h:1,w:250,c:1]                                  serving_default_input_layer0 
+------ --------------------------------- ---------------------- ----------------- --------- ------------------------------ 
+1      conv2d_1 (CONV_2D)                [b:1,h:1,w:248,c:32]   128/224              23,840                      reshape_0 
+       nl_1_nl (CONV_2D)                 [b:1,h:1,w:248,c:32]                         7,936                       conv2d_1 
+------ --------------------------------- ---------------------- ----------------- --------- ------------------------------ 
+2      reshape_2 (RESHAPE)               [b:1,h:248,c:32]                                                          nl_1_nl 
+------ --------------------------------- ---------------------- ----------------- --------- ------------------------------ 
+3      reshape_3 (EXPAND_DIMS)           [b:1,h:1,w:248,c:32]                                                    reshape_2 
+------ --------------------------------- ---------------------- ----------------- --------- ------------------------------ 
+4      pool_4 (MAX_POOL_2D)              [b:1,h:1,w:124,c:32]                         7,936                      reshape_3 
+------ --------------------------------- ---------------------- ----------------- --------- ------------------------------ 
+5      reshape_5 (RESHAPE)               [b:1,c:3968]                                                               pool_4 
+------ --------------------------------- ---------------------- ----------------- --------- ------------------------------ 
+6      tfl_pseudo_qconst3 ()             [b:32,c:3968]          126,976/126,976                                            
+       tfl_pseudo_qconst2 ()             [b:32]                 32/128                                                     
+       gemm_6 (FULLY_CONNECTED)          [b:1,c:32]                                 127,008                      reshape_5 
+                                                                                                        tfl_pseudo_qconst3 
+                                                                                                        tfl_pseudo_qconst2 
+       nl_6_nl (FULLY_CONNECTED)         [b:1,c:32]                                      32                         gemm_6 
+------ --------------------------------- ---------------------- ----------------- --------- ------------------------------ 
+7      tfl_pseudo_qconst1 ()             [b:2,c:32]             64/64                                                      
+       tfl_pseudo_qconst ()              [b:2]                  2/8                                                        
+       gemm_7 (FULLY_CONNECTED)          [b:1,c:2]                                       66                        nl_6_nl 
+                                                                                                        tfl_pseudo_qconst1 
+                                                                                                         tfl_pseudo_qconst 
+------ --------------------------------- ---------------------- ----------------- --------- ------------------------------ 
+8      nl_8 (SOFTMAX)                    [b:1,c:2]                                       30                         gemm_7 
+------ --------------------------------- ---------------------- ----------------- --------- ------------------------------ 
+model: macc=166,848 weights=127,400 activations=-- io=--
+
+
+
+
+
+Compilation details
+------------------------------------------------------------------------------------
+Compiler version: 1.1.1-14
+Compiler arguments:  -i C:\Users\ntustbestlab1234\.stm32cubemx\network_output\MIT_BIH_quant_114_OE_3_3_0.onnx --json-quant-file C:\Users\ntustbestlab1234\.stm32cubemx\network_output\MIT_BIH_quant_114_OE_3_3_0_Q.json -g network.c --load-mdesc C:\Users\ntustbestlab1234\STM32Cube\Repository\Packs\STMicroelectronics\X-CUBE-AI\10.2.0\scripts\N6_scripts\my_mdescs\stm32n6.mdesc --load-mpool C:\Users\ntustbestlab1234\STM32Cube\Repository\Packs\STMicroelectronics\X-CUBE-AI\10.2.0\scripts\N6_scripts\my_mpools\stm32n6.mpool --save-mpool-file C:\Users\ntustbestlab1234\AppData\Local\Temp\mxAI_workspace27672607734890016477086016986033244\neural_art__network\stm32n6.mpool --out-dir-prefix C:\Users\ntustbestlab1234\AppData\Local\Temp\mxAI_workspace27672607734890016477086016986033244\neural_art__network/ --optimization 3 --all-buffers-info --mvei --cache-maintenance --Oauto-sched --native-float --enable-virtual-mem-pools --Omax-ca-pipe 4 --Ocache-opt --Os --output-info-file c_info.json
+====================================================================================
+
+Memory usage information  (input/output buffers are included in activations)
+------------------------------------------------------------------------------------
+	flexMEM    [0x34000000 - 0x34000000]:          0  B /          0  B  (  0.00 % used) -- weights:          0  B (  0.00 % used)  activations:          0  B (  0.00 % used)
+	cpuRAM1    [0x34064000 - 0x34064000]:          0  B /          0  B  (  0.00 % used) -- weights:          0  B (  0.00 % used)  activations:          0  B (  0.00 % used)
+	cpuRAM2    [0x34100000 - 0x34200000]:          0  B /      1.000 MB  (  0.00 % used) -- weights:          0  B (  0.00 % used)  activations:          0  B (  0.00 % used)
+	npuRAM3    [0x34200000 - 0x34270000]:          0  B /    448.000 kB  (  0.00 % used) -- weights:          0  B (  0.00 % used)  activations:          0  B (  0.00 % used)
+	npuRAM4    [0x34270000 - 0x342E0000]:          0  B /    448.000 kB  (  0.00 % used) -- weights:          0  B (  0.00 % used)  activations:          0  B (  0.00 % used)
+	npuRAM5    [0x342E0000 - 0x34350000]:      8.000 kB /    448.000 kB  (  1.79 % used) -- weights:          0  B (  0.00 % used)  activations:      8.000 kB (  1.79 % used)
+	npuRAM6    [0x34350000 - 0x343C0000]:          0  B /    448.000 kB  (  0.00 % used) -- weights:          0  B (  0.00 % used)  activations:          0  B (  0.00 % used)
+	octoFlash  [0x71000000 - 0x78000000]:    124.720 kB /    112.000 MB  (  0.11 % used) -- weights:    124.720 kB (  0.11 % used)  activations:          0  B (  0.00 % used)
+	hyperRAM   [0x90000000 - 0x92000000]:          0  B /     32.000 MB  (  0.00 % used) -- weights:          0  B (  0.00 % used)  activations:          0  B (  0.00 % used)
+---
+Total:                                           132.720 kB                                  -- weights:    124.720 kB                  activations:      8.000 kB                   
+====================================================================================
+
+
+Used memory ranges
+------------------------------------------------------------------------------------
+	npuRAM5    [0x342E0000 - 0x34350000]: 0x342E0000-0x342E2000
+	octoFlash  [0x71000000 - 0x78000000]: 0x71000000-0x7101F2F0
+====================================================================================
+
+Epochs details
+------------------------------------------------------------------------------------
+Total number of epochs: 6 of which 1 implemented in software
+---
+epoch ID   HW/SW/EC Operation (SW only)
+epoch 1       HW    
+epoch 2       HW    
+epoch 3       HW    
+epoch 4       HW    
+epoch 5       HW    
+epoch 6      -SW-   (      Softmax       )
+==================================================================================== 
+ Requested memory size by section - "stm32n6npu" target
+ ------------------------------- -------- --------- ------ ------- 
+ module                              text    rodata   data     bss 
+ ------------------------------- -------- --------- ------ ------- 
+ NetworkRuntime1020_CM55_GCC.a      9,432         0      0       0 
+ network.o                            796     5,016      0       0 
+ ll_aton_reloc_network.o                0         0      0       0 
+ lib (toolchain)*                       0         0      0       0 
+ ll atonn runtime                   6,750     5,126      0      29 
+ ------------------------------- -------- --------- ------ ------- 
+ RT total**                        16,978    10,142      0      29 
+ ------------------------------- -------- --------- ------ ------- 
+ weights                                0   127,713      0       0 
+ activations                            0         0      0   8,192 
+ io                                     0         0      0       0 
+ ------------------------------- -------- --------- ------ ------- 
+ TOTAL                             16,978   137,855      0   8,221 
+ ------------------------------- -------- --------- ------ ------- 
+ *  toolchain objects (libm/libgcc*)
+ ** RT AI runtime objects (kernels+infrastructure)
+  
+  Summary - "stm32n6npu" target
+  --------------------------------------------------
+               FLASH (ro)      %*   RAM (rw)      % 
+  --------------------------------------------------
+  RT total         27,120   17.5%         29   0.4% 
+  --------------------------------------------------
+  TOTAL           154,833              8,221        
+  --------------------------------------------------
+  *  rt/total
+
